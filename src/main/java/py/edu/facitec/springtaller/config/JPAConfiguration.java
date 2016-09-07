@@ -18,27 +18,33 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement public class JPAConfiguration { 
 	 
  	@Bean 
- 	public LocalContainerEntityManagerFactoryBean  	entityManagerFactory(){ 
- 	LocalContainerEntityManagerFactoryBean em = new  	LocalContainerEntityManagerFactoryBean();
+ 	public LocalContainerEntityManagerFactoryBean
+ 	entityManagerFactory(){ 
+ 	LocalContainerEntityManagerFactoryBean em = new
+ 			LocalContainerEntityManagerFactoryBean();
  	em.setDataSource((javax.sql.DataSource) dataSource());  
- 	em.setPackagesToScan(new String[]  	{ "py.edu.facitec.hibernatespring.modelo" }); 
- 	JpaVendorAdapter vendorAdapter =  	new HibernateJpaVendorAdapter(); 
+ 	em.setPackagesToScan(new String[]
+ 			{ "py.edu.facitec.hibernatespring.modelo" }); 
+ 	JpaVendorAdapter vendorAdapter =
+ 			new HibernateJpaVendorAdapter(); 
  	em.setJpaVendorAdapter(vendorAdapter);
- 	em.setJpaProperties(additionalProperties()); return em; } 
-@Bean  	public DataSource dataSource(){ 
-	DriverManagerDataSource dataSource =  	new DriverManagerDataSource(); 
+ 	em.setJpaProperties(additionalProperties());
+ 	return em; } 
+@Bean
+public DataSource dataSource(){ 
+	DriverManagerDataSource dataSource =
+			new DriverManagerDataSource(); 
  	dataSource.setDriverClassName("com.mysql.jdbc.Driver"); 
- 	dataSource.setUrl( 
- 	"jdbc:mysql://localhost:3306/springtaller_bd");
+ 	dataSource.setUrl("jdbc:mysql://localhost:3306/springtaller_bd");
  	dataSource.setUsername( "root" );  	
  	dataSource.setPassword( "" ); 
  	return  dataSource; 
  	} 
  	 
- 	private Properties additionalProperties() {  	Properties properties = new Properties();  	properties.setProperty("hibernate.hbm2ddl.auto", 
- 	"update"); 
- 	properties.setProperty("hibernate.dialect", 
-   "org.hibernate.dialect.MySQL5Dialect"); 
+ 	private Properties additionalProperties() {
+ 		Properties properties = new Properties();
+ 		properties.setProperty("hibernate.hbm2ddl.auto", "update"); 
+ 	    properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect"); 
  	 
  properties.setProperty("hibernate.show_sql", "true"); 
  	 	 	return properties; 
@@ -48,8 +54,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  	public PlatformTransactionManager 
 transactionManager 
  	(EntityManagerFactory emf){ 
- 	JpaTransactionManager transactionManager =  	new JpaTransactionManager(); 
- 	transactionManager.setEntityManagerFactory(emf);  	return transactionManager; 
+ 	JpaTransactionManager transactionManager = 
+ 			new JpaTransactionManager(); 
+ 	transactionManager.setEntityManagerFactory(emf); 
+ 	return transactionManager; 
  	}
 }
 
