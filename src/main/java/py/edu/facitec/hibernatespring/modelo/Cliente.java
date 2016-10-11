@@ -1,5 +1,7 @@
 package py.edu.facitec.hibernatespring.modelo;
 
+
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+// Indicamos que nuestra clase será gerenciada para ser persistida en la base de datos y creara una tabla
 @Entity
 public class Cliente {
+	//Indicamos que tendrá la propiedad de clave primaria
 	@Id
+	// Indicamos la generación automática del código correspondiente a la clave primaria.
 	@GeneratedValue
 	private Integer id;
 	private String nombre;
@@ -52,9 +57,8 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", pedidos=" + pedidos
-				+ ", toString()=" + super.toString() + "]";
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", pedidos=" + pedidos + "]";
 	}
 	
-
+	
 }

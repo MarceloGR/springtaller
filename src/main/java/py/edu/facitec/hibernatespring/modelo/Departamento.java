@@ -1,5 +1,7 @@
 package py.edu.facitec.hibernatespring.modelo;
 
+
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,27 +9,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 @Entity
 public class Departamento {
-	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Integer id;
 	private String descripcion;
-	
-	
-	@OneToOne //indicamos que es una relacion de uno a uno	
-	private Gerente gerente;
-	
 	@OneToMany(mappedBy="departamento")
-	private List<Usuario> usuarios;
+	private List<Usuario> listaUsuario;
+	
+	//indicamos que es una relacion de uno a uno 
+	@OneToOne
+	private Gerente gerente;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -39,6 +38,14 @@ public class Departamento {
 		this.descripcion = descripcion;
 	}
 
+	public List<Usuario> getListaUsuario() {
+		return listaUsuario;
+	}
+
+	public void setListaUsuario(List<Usuario> listaUsuario) {
+		this.listaUsuario = listaUsuario;
+	}
+
 	public Gerente getGerente() {
 		return gerente;
 	}
@@ -47,23 +54,11 @@ public class Departamento {
 		this.gerente = gerente;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
 	@Override
 	public String toString() {
-		return "Departamento [id=" + id + ", descripcion=" + descripcion + ", gerente=" + gerente + ", usuarios="
-				+ usuarios + ", toString()=" + super.toString() + "]";
+		return "Departamento [id=" + id + ", descripcion=" + descripcion + ", listaUsuario=" + listaUsuario
+				+ ", gerente=" + gerente + "]";
 	}
-
-	
-	
-	
 	
 	
 

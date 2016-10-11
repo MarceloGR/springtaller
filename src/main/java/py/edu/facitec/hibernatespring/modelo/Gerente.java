@@ -1,5 +1,6 @@
 package py.edu.facitec.hibernatespring.modelo;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,8 @@ public class Gerente {
 	private String nombre;
 	@OneToOne(mappedBy="gerente")
 	private Departamento departamento;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -40,10 +43,8 @@ public class Gerente {
 	}
 	@Override
 	public String toString() {
-		return "Gerente [id=" + id + ", ci=" + ci + ", nombre=" + nombre + ", departamento=" + departamento
-				+ ", toString()=" + super.toString() + "]";
+		return "Gerente [id=" + id + ", ci=" + ci + ", nombre=" + nombre + ", departamento=" + departamento + "]";
 	}
-	
 	
 	
 

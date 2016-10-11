@@ -7,14 +7,21 @@ import org.springframework.stereotype.Repository;
 
 import py.edu.facitec.hibernatespring.modelo.Cliente;
 
-@Repository 
-public class ClienteDao { 
- 
- 	@PersistenceContext 
-private EntityManager manager; 
- public void save(Cliente cliente){  	
-	 
-	 manager.persist(cliente); 
- 	} 
-} 
 
+//posibilita posteriormente utilizar la anotacion Awired
+@Repository  //indicamos que manipulara los datos
+public class ClienteDao extends DAOGenerico<Cliente> {
+	
+	@PersistenceContext
+	private EntityManager manager;
+	
+	public ClienteDao() {
+		super(Cliente.class);
+	}
+
+	@Override
+	protected EntityManager getEntityManager() {
+		return manager;
+	}
+
+}

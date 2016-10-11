@@ -1,8 +1,11 @@
 package py.edu.facitec.hibernatespring.modelo;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,12 +15,13 @@ public class Producto {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Column(length=100,nullable=false,unique=true)
 	private String descripcion;
 	private Date fechaVencimiento;
-	private double precio;
+	private Double precio;
 	private Integer cantidad;
 	
-	@OneToMany(mappedBy="producto" )
+	@OneToMany(mappedBy="producto")
 	private List<ItemPedido> itemPedidos;
 
 	public Integer getId() {
@@ -44,11 +48,11 @@ public class Producto {
 		this.fechaVencimiento = fechaVencimiento;
 	}
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 
@@ -71,17 +75,9 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", descripcion=" + descripcion + ", fechaVencimiento=" + fechaVencimiento
-				+ ", precio=" + precio + ", cantidad=" + cantidad + ", itemPedidos=" + itemPedidos + ", toString()="
-				+ super.toString() + "]";
+				+ ", precio=" + precio + ", cantidad=" + cantidad + ", itemPedidos=" + itemPedidos + "]";
 	}
-
-	
-
 	
 	
 	
-	
-	
-	
-
 }

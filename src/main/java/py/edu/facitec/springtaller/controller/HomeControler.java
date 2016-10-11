@@ -1,14 +1,15 @@
 package py.edu.facitec.springtaller.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
-public class HomeController {
+public class HomeControler {
 	@RequestMapping("/")
-public String index(){
-		System.out.println("iniciando pagina bienvenida");
-		return"hello-world";
+	public String index(){
+		return "Hello-Word";
 	}
-   
 
 }
+

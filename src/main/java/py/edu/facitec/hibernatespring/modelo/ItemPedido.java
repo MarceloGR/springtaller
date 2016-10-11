@@ -2,6 +2,8 @@ package py.edu.facitec.hibernatespring.modelo;
 
 
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,15 +14,14 @@ public class ItemPedido {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
 	private int cantidadProducto;
-	private double subtotal;
-	
-	@ManyToOne
-	private Pedido pedido;
+	private double subTotal;
 	
 	@ManyToOne
 	private Producto producto;
+	
+	@ManyToOne
+	private Pedido pedido;
 
 	public Integer getId() {
 		return id;
@@ -38,20 +39,12 @@ public class ItemPedido {
 		this.cantidadProducto = cantidadProducto;
 	}
 
-	public double getSubtotal() {
-		return subtotal;
+	public double getSubTotal() {
+		return subTotal;
 	}
 
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
 	}
 
 	public Producto getProducto() {
@@ -62,13 +55,19 @@ public class ItemPedido {
 		this.producto = producto;
 	}
 
-	@Override
-	public String toString() {
-		return "ItemPedido [id=" + id + ", cantidadProducto=" + cantidadProducto + ", subtotal=" + subtotal
-				+ ", pedido=" + pedido + ", producto=" + producto + ", toString()=" + super.toString() + "]";
+	public Pedido getPedido() {
+		return pedido;
 	}
 
-	
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	@Override
+	public String toString() {
+		return "ItemPedido [id=" + id + ", cantidadProducto=" + cantidadProducto + ", subTotal=" + subTotal
+				+ ", producto=" + producto + ", pedido=" + pedido + "]";
+	}
 
 	
 	
