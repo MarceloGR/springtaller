@@ -1,6 +1,4 @@
-package py.edu.facitec.springtaller.controller; 
-
- 
+package py.edu.facitec.springtaller.controller;
 
 import java.util.List;
 
@@ -13,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import py.edu.facitec.hibernatespring.dao.DepartamentoDao;
-import py.edu.facitec.hibernatespring.modelo.Departamento;
-
-
+import py.edu.facitec.springtaller.dao.DepartamentoDao;
+import py.edu.facitec.springtaller.model.Departamento;
 
 public class DepartamentoController {
 	@Autowired

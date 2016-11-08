@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-legalis2
-
+	<H1>Para acceder a la pagina de la empresa hay que acceder a la direccion www.empresa.com.py</H1>
 </body>
 </html>

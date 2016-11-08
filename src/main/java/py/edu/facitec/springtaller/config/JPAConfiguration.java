@@ -1,9 +1,5 @@
 package py.edu.facitec.springtaller.config;
 
-
-
-
-
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -24,38 +20,39 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  	public LocalContainerEntityManagerFactoryBean entityManagerFactory(){ 
  		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();  	
  		em.setDataSource(dataSource());  	
- 		em.setPackagesToScan(new String[]{"py.edu.facitec.springtaller.model"});  	
+ 		em.setPackagesToScan(new String[]{"py.edu.facitec.springtaller.model", "py.edu.facitec.springtaller.model.general"});  	
  		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();  	
  		em.setJpaVendorAdapter(vendorAdapter); 
  		em.setJpaProperties(additionalProperties()); 
  		return em; 
  	} 
 //******************My SQL *************
-	@Bean  	
- 	public DataSource dataSource(){
- 		DriverManagerDataSource dataSource = new DriverManagerDataSource(); 
- 		dataSource.setDriverClassName("com.mysql.jdbc.Driver"); 
- 		dataSource.setUrl( "jdbc:mysql://localhost:3306/springtaller");  	
- 		dataSource.setUsername( "root" );  	
- 		dataSource.setPassword( "" );  	
- 		return dataSource; 
- 	} 
- 	
-////*******************Postgre**************
-// 	@Bean
+//	@Bean  	
 // 	public DataSource dataSource(){
 // 		DriverManagerDataSource dataSource = new DriverManagerDataSource(); 
-// 		dataSource.setDriverClassName("org.postgresql.Driver"); 
-// 		dataSource.setUrl( "jdbc:postgresql://localhost:5432/formativa");  	
-// 		dataSource.setUsername( "postgres" );  	
-// 		dataSource.setPassword( "12345" );  	
+// 		dataSource.setDriverClassName("com.mysql.jdbc.Driver"); 
+// 		dataSource.setUrl( "jdbc:mysql://localhost:3306/springtaller");  	
+// 		dataSource.setUsername( "root" );  	
+// 		dataSource.setPassword( "" );  	
 // 		return dataSource; 
 // 	} 
+ 	
+////*******************Postgre**************
+ 	@Bean
+ 	public DataSource dataSource(){
+ 		DriverManagerDataSource dataSource = new DriverManagerDataSource(); 
+ 		dataSource.setDriverClassName("org.postgresql.Driver"); 
+ 		dataSource.setUrl( "jdbc:postgresql://localhost:5432/springtaller");  	
+ 		dataSource.setUsername( "postgres" );  	
+ 		dataSource.setPassword( "12345" );  	
+ 		return dataSource; 
+ 	} 
  	 
  	private Properties additionalProperties() {
  		Properties properties = new Properties();  	
  		properties.setProperty("hibernate.hbm2ddl.auto", "update"); 
- 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect"); 
+ 		//properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+ 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
  		properties.setProperty("hibernate.show_sql", "true"); 
  	 	 return properties; 
  	} 

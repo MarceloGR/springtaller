@@ -1,6 +1,5 @@
 package py.edu.facitec.springtaller.config;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +18,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import py.edu.facitec.hibernatespring.dao.ClienteDao;
-import py.edu.facitec.hibernatespring.modelo.Producto;
 import py.edu.facitec.springtaller.controller.HomeControler;
-import py.edu.facitec.springtaller.resolver.CustomXMLViewResolver;
-import py.edu.facitec.springtaller.resolver.JsonViewResolver;
-
-
+import py.edu.facitec.springtaller.dao.ClienteDao;
+import py.edu.facitec.springtaller.model.Producto;
+import py.edu.facitec.springtaller.viewresolver.CustomXMLViewResolver;
+import py.edu.facitec.springtaller.viewresolver.JsonViewResolver;
 
 //activa los compontes MVC de spring para trabajar el servlet 
 @EnableWebMvc

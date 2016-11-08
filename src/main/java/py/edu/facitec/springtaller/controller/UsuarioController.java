@@ -1,7 +1,8 @@
 package py.edu.facitec.springtaller.controller;
 
-
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import py.edu.facitec.hibernatespring.dao.UsuarioDao;
-import py.edu.facitec.hibernatespring.modelo.Usuario;
+import py.edu.facitec.springtaller.dao.UsuarioDao;
+import py.edu.facitec.springtaller.model.Usuario;
 
-
-
+@RestController
+@Transactional
+@RequestMapping("/usuario")
 public class UsuarioController {
 	@Autowired
 	private UsuarioDao usuarioDao;
@@ -47,6 +51,11 @@ public class UsuarioController {
 		}
 		usuarioDao.eliminar(usuario);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/form", method=RequestMethod.GET)
+	public ModelAndView formulario(){
+		return new ModelAndView("/usuario/form");
 	}
 
 }

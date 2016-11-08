@@ -1,7 +1,5 @@
 package py.edu.facitec.springtaller.config;
 
-
-
 import javax.servlet.Filter;
 
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;

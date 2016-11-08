@@ -1,7 +1,5 @@
 package py.edu.facitec.springtaller.controller;
 
-
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,11 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import py.edu.facitec.hibernatespring.dao.ProductoDao;
-import py.edu.facitec.hibernatespring.modelo.Producto;
-
-
+import py.edu.facitec.springtaller.dao.ProductoDao;
+import py.edu.facitec.springtaller.model.Producto;
 
 @RestController
 @Transactional
@@ -59,6 +56,11 @@ public class ProductoController {
 		}
 		productoDao.eliminar(productoAElimminar);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/form", method=RequestMethod.GET)
+	public ModelAndView formulario(){
+		return new ModelAndView("/productos/form");
 	}
 
 }
